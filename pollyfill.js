@@ -1,5 +1,18 @@
 // .map
 
+let items1 = [1, 2, 3, 4, 5];
+let timesTwo = item => item * 2;
+const result1 = [];
+
+for (let i = 0; i < items1.length; i++) {
+  result1.push(items1[i] * 2) ;
+}
+
+console.log(result1);
+console.log(items1.map(num => num * 2));
+
+// .map - Pollyfill
+
 Array.prototype.myMap = function (callback) {
   let temp = [];
   for (let i = 0; i < this.length; i++) {
@@ -18,6 +31,21 @@ console.log(checkMyMap);
 
 // .filter
 
+let items2 = [1, 2, 3, 4, 5];
+let isEven = item => item % 2 === 0;
+const result2 = [];
+
+for (let i = 0; i < items2.length; i++) {
+  if (isEven(items2[i])) {
+    result2.push(items2[i]);
+  }
+}
+
+console.log(result2);
+console.log(items2.filter(num => num % 2 == 0));
+
+// .filter - Pollyfill
+
 Array.prototype.myFilter = function (callback) {
   let temp = [];
   for (let i = 0; i < this.length; i++) {
@@ -35,6 +63,28 @@ console.log(checkMyFilter);
 
 
 // .reduce
+
+let items3 = [1, 2, 3, 4, 5];
+
+const sumReducer = (initialValue, current) => initialValue + current;
+
+const reduce = (reducer, initialValue, array) => {
+  let acc = initialValue;
+
+  for(let i = 0; i < array.length; i++) {
+    let curr = array[i]
+    acc = reducer(acc, curr)
+  }
+
+  return acc;
+}
+
+const result3 = reduce(sumReducer, 0, items3);
+
+console.log(result3);
+console.log(items3.reduce((acc, curr) => acc + curr));
+
+// .reduce - Pollyfill
 
 Array.prototype.myReduce = function (callback, initialValue) {
   let acc = initialValue;
