@@ -1,14 +1,16 @@
 // .map
 
 let items1 = [1, 2, 3, 4, 5];
-let timesTwo = item => item * 2;
-const result1 = [];
+let timesTwo = item => { item * 2;
+let result1 = [];
 
 for (let i = 0; i < items1.length; i++) {
   result1.push(items1[i] * 2) ;
 }
+return result1;
+}
 
-console.log(result1);
+console.log(timesTwo());
 console.log(items1.map(num => num * 2));
 
 // .map - Pollyfill
@@ -33,15 +35,20 @@ console.log(checkMyMap);
 
 let items2 = [1, 2, 3, 4, 5];
 let isEven = item => item % 2 === 0;
-const result2 = [];
 
-for (let i = 0; i < items2.length; i++) {
-  if (isEven(items2[i])) {
-    result2.push(items2[i]);
+let func = arr => {
+  const result2 = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (isEven(arr[i])) {
+      result2.push(arr[i]);
+    }
   }
+  return result2;
 }
 
-console.log(result2);
+
+console.log(func(items2));
 console.log(items2.filter(num => num % 2 == 0));
 
 // .filter - Pollyfill
